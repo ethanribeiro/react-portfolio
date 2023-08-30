@@ -2,18 +2,17 @@ import { useState, useEffect } from 'react';
 
 function Projects(props) {
     const [projects, setProjects] = useState(null);
-    const getProjectsData = async () => {
+    async function getProjectsData() {
         const response = await fetch("./projects.json");
         const data = await response.json();
-
         setProjects(data);
     };
 
-    useEffect(() => getProjectsData(), []);
+    useEffect(() => { getProjectsData() }, []);
 
-    const loaded = () => {
-        return projects.map((project) => (
-            <div>
+    function loaded() {
+        return projects.map((project, idx) => (
+            <section key={idx}>
                 <h1>{project.name}</h1>
                 <img src={project.image} />
                 <a href={project.git}>
@@ -22,7 +21,7 @@ function Projects(props) {
                 <a href={project.live}>
                     <button>live site</button>
                 </a>
-            </div>
+            </section>
         ));
     };
 
