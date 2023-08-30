@@ -16,6 +16,7 @@ function About() {
     const loaded = () => (
         <div>
             <h2>{about.name}</h2>
+            <img src="" />
             <h3>{about.email}</h3>
             <p>{about.bio}</p>
         </div>
